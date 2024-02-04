@@ -396,7 +396,7 @@ if (preg_match_all($pattern, $text, $matches)) {
         $contador=$contador+1;
 
         $writer = new Xlsx($spreadsheet);
-        //$writer->save('ejemplo.xlsx');
+        //$writer->save('ejemplo.xlsx');vamos a ver 
         $nombreArchivoPDF = basename($pdfFilePath);
         $nombreArchivoExcel = str_replace('.pdf', '.xlsx', $nombreArchivoPDF); 
         $writer->save($nombreArchivoExcel);
