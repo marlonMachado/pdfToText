@@ -14,20 +14,32 @@ $spreadsheet = new Spreadsheet();
 
 // Obtén la hoja de cálculo activa
 $sheet = $spreadsheet->getActiveSheet();
-$pdfFilePath = 'D:\Documentos del Sistema\Desktop\CC79227.pdf';
+$pdfFilePath = 'D:\Documentos del Sistema\Desktop\pdfs\CC79227.pdf';
+$ruta_carpeta = 'D:\Documentos del Sistema\Desktop\pdfs';
+$archivos = scandir($ruta_carpeta);
+$archivos = array_diff($archivos, array('.', '..'));
+$arrayPdfs=[];
+foreach ($archivos as $archivo) {
+    $arrayPdfs[] = $ruta_carpeta.'\\'.$archivo;
+}
+
+foreach ($arrayPdfs as $archivo_pdf) {
+    
 
 // Crear un nuevo analizador PdfParser
 $parser = new Parser();
 
-$pdf = $parser->parseFile($pdfFilePath);
+//$pdf = $parser->parseFile($pdfFilePath);
+$pdf = $parser->parseFile($archivo_pdf);
 
 $text = $pdf->getText();
+
 
 //echo $text;
 echo'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 echo '<br>';
 
-echo 'Datos extraidos';
+//echo 'Datos extraidos';
 echo'<br>';
 
 
@@ -456,79 +468,79 @@ if (preg_match_all($pattern, $text, $matches)) {
         if (preg_match($patron_fecha_toma_colesterol, $textoCapturado, $matches_fecha_toma_colesterol)) {
             //print_r( $matches_colesterol);
             $fecha_toma_coleterol = $matches_fecha_toma_colesterol[1];
-            echo " _fecha_toma_coleterol: $fecha_toma_coleterol\n";
+            //echo " _fecha_toma_coleterol: $fecha_toma_coleterol\n";
         }
         $fecha_toma_colesterol_hdl='ND';
         if (preg_match($patron_fecha_toma_colesterol_hdl, $textoCapturado, $matches_fecha_toma_coleterol_hdl)) {
             //print_r( $matches_colesterol);
             $fecha_toma_colesterol_hdl = $matches_fecha_toma_coleterol_hdl[1];
-            echo " fecha_toma_coleterol_hdl: $fecha_toma_colesterol_hdl\n";
+            //echo " fecha_toma_coleterol_hdl: $fecha_toma_colesterol_hdl\n";
         }
         $fecha_toma_trigliceridos='ND';
         if (preg_match($patron_fecha_toma_trigliceridos, $textoCapturado, $matches_fecha_toma_trigliceridos)) {
             //print_r( $matches_colesterol);
             $fecha_toma_trigliceridos = $matches_fecha_toma_trigliceridos[1];
-            echo " fecha_toma_trigliceridos: $fecha_toma_trigliceridos\n";
+            //echo " fecha_toma_trigliceridos: $fecha_toma_trigliceridos\n";
         }
         $fecha_toma_colesterol_ldl='ND';
         if (preg_match($patron_fecha_toma_colesterol_ldl, $textoCapturado, $matches_fecha_toma_colesterol_ldl)) {
             //print_r( $matches_colesterol);
             $fecha_toma_colesterol_ldl = $matches_fecha_toma_colesterol_ldl[1];
-            echo " fecha_toma_colesterol_ldl: $fecha_toma_colesterol_ldl\n";
+            //echo " fecha_toma_colesterol_ldl: $fecha_toma_colesterol_ldl\n";
         }
         $fecha_toma_albimnuriaCreatinuria='ND';
         if (preg_match($patron_fecha_toma_albimnuriaCreatinuria, $textoCapturado, $matches_fecha_toma_albimnuriaCreatinuria)) {
             //print_r( $matches_colesterol);
             $fecha_toma_albimnuriaCreatinuria = $matches_fecha_toma_albimnuriaCreatinuria[1];
-            echo " fecha_toma_albimnuriaCreatinuria: $fecha_toma_albimnuriaCreatinuria\n";
+            //echo " fecha_toma_albimnuriaCreatinuria: $fecha_toma_albimnuriaCreatinuria\n";
         }
         $fecha_toma_creatinina='ND';
         if (preg_match($patron_fecha_creatinina_actual, $textoCapturado, $matches_fecha_toma_creatinina)) {
             //print_r( $matches_colesterol);
             $fecha_toma_creatinina = $matches_fecha_toma_creatinina[1];
-            echo " fecha_toma_creatinina: $fecha_toma_creatinina\n";
+            //echo " fecha_toma_creatinina: $fecha_toma_creatinina\n";
         }
         $fecha_toma_albumina_serica='ND';
         if (preg_match($patron_fecha_toma_albumina_serica, $textoCapturado, $matches_fecha_toma_albumina_serica)) {
             //print_r( $matches_colesterol);
             $fecha_toma_albumina_serica = $matches_fecha_toma_albumina_serica[1];
-            echo " fecha_toma_albumina_serica: $fecha_toma_albumina_serica\n";
+           // echo " fecha_toma_albumina_serica: $fecha_toma_albumina_serica\n";
         }
         $fecha_toma_fosforo='ND';
         if (preg_match($patron_fecha_toma_fosforo, $textoCapturado, $matches_fecha_toma_fosforo)) {
             //print_r( $matches_colesterol);
             $fecha_toma_fosforo = $matches_fecha_toma_fosforo[1];
-            echo " fecha_toma_fosforo: $fecha_toma_fosforo\n";
+           // echo " fecha_toma_fosforo: $fecha_toma_fosforo\n";
         }
         $fecha_toma_uroanailis='ND';
         if (preg_match($patron_fecha_toma_uroanailis, $textoCapturado, $matches_fecha_toma_uroanailis)) {
             //print_r( $matches_colesterol);
             $fecha_toma_uroanailis = $matches_fecha_toma_uroanailis[1];
-            echo " fecha_toma_uroanailis: $fecha_toma_uroanailis\n";
+           // echo " fecha_toma_uroanailis: $fecha_toma_uroanailis\n";
         }
         $fecha_toma_pth='ND';
         if (preg_match($patron_fecha_toma_pth, $textoCapturado, $matches_fecha_toma_pth)) {
             //print_r( $matches_colesterol);
             $fecha_toma_pth = $matches_fecha_toma_pth[1];
-            echo " fecha_toma_pth: $fecha_toma_pth\n";
+            //echo " fecha_toma_pth: $fecha_toma_pth\n";
         }
         $fecha_toma_hemoglobinaGlico='ND';
         if (preg_match($patron_fecha_toma_hemoglobinaGlico, $textoCapturado, $matches_fecha_toma_hemoglobinaGlico)) {
             //print_r( $matches_colesterol);
             $fecha_toma_hemoglobinaGlico = $matches_fecha_toma_hemoglobinaGlico[1];
-            echo " fecha_toma_hemoglobinaGlico: $fecha_toma_hemoglobinaGlico\n";
+            //echo " fecha_toma_hemoglobinaGlico: $fecha_toma_hemoglobinaGlico\n";
         }
         $fecha_toma_hemoglobina='ND';
         if (preg_match($patron_fecha_toma_hemoglobina, $textoCapturado, $matches_fecha_toma_hemoglobina)) {
             //print_r( $matches_colesterol);
             $fecha_toma_hemoglobina = $matches_fecha_toma_hemoglobina[1];
-            echo " fecha_toma_hemoglobina: $fecha_toma_hemoglobina\n";
+           // echo " fecha_toma_hemoglobina: $fecha_toma_hemoglobina\n";
         }
         $fecha_toma_glicemia_ayuno='ND';
         if (preg_match($patron_fecha_toma_glicemia_ayuno, $textoCapturado, $matches_fecha_toma_glicemia_ayuno)) {
             //print_r( $matches_colesterol);
             $fecha_toma_glicemia_ayuno = $matches_fecha_toma_glicemia_ayuno[1];
-            echo " fecha_toma_glicemia_ayuno: $fecha_toma_glicemia_ayuno\n";
+            //echo " fecha_toma_glicemia_ayuno: $fecha_toma_glicemia_ayuno\n";
         }
         echo'<br>';
         
@@ -592,13 +604,13 @@ if (preg_match_all($pattern, $text, $matches)) {
 
         $writer = new Xlsx($spreadsheet);
         //$writer->save('ejemplo.xlsx');vamos a ver 
-        $nombreArchivoPDF = basename($pdfFilePath);
+        $nombreArchivoPDF = basename($archivo_pdf);
         $nombreArchivoExcel = str_replace('.pdf', '.xlsx', $nombreArchivoPDF); 
-        $writer->save($nombreArchivoExcel);
+        $writer->save('excel/'.$nombreArchivoExcel);
         echo "El archivo $nombreArchivoExcel se ha generado correctamente.";
     }
 } else {
     echo "No se encontró ningún texto entre las instancias de Fundación Clínica Nelson Mandela.";
 }
-
+}
 ?>
